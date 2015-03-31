@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = current_user.questions.new(question_params)
+    @question = Question.new(question_params)
     if @question.save
       flash[:notice] = "Question added successfully!"
       redirect_to questions_path

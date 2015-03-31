@@ -6,5 +6,6 @@
 <li><%= link_to question.title, question_path(question) %> </li>
 </ul>
 <% end %>
-<%= link_to "Create a user", new_user_path %>
-<%= link_to "Login", log_in_path %>
+<%= link_to "Create a user", new_user_registration_path %>
+<%= link_to "Login", new_user_session_path %>
+<%= link_to "New Question", new_question_path %>
