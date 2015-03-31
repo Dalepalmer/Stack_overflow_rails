@@ -1,0 +1,11 @@
+<li class="question" id="question_<% question.id %>">
+  <div class="jumbotron">
+  <dl>
+  <dt><%= question.title %></dt>
+  <dd><%= question.body %></dd>
+  <% if current_user == question.user %>
+    <dd> <%= button_to "delete", question_path(question), method: 'delete', remote: true %></dd>
+  <% end %>
+  </dl>
+  </div>
+</li>

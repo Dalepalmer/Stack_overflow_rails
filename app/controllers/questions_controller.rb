@@ -13,13 +13,27 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
+  def edit
+    @haiku = Haiku.find(params[:id])
+  end
+
   def create
     @question = Question.new(question_params)
+    @question.user = current_user
     if @question.save
-      flash[:notice] = "Question added successfully!"
-      redirect_to questions_path
-    else
-      render :new
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "Question added successfully!"
+          redirect_to root_path
+        end
+      format.js
+    end
+  else
+    flash[:alert] = "There was an issue saving your question"
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     end
   end
 
@@ -34,11 +48,14 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question = Question.find(params[:id])
-    if @question.destroy
-      flash[:alert] = "Question successfully deleted!"
+    @question = Question.destroy(params[:id])
+      respond_to do |format|
+        format.html do
+          flash[:notice] = "question deleted"
+          redirect_to root_path
+        end
+        format.js
     end
-    redirect_to :back
   end
 
   private

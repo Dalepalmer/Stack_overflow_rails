@@ -7,7 +7,6 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'bcrypt-ruby', '~> 3.1.5', require: "bcrypt"
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'devise'
 
@@ -26,6 +25,7 @@ group :test, :development do
   gem 'launchy'
   gem 'factory_girl_rails'
   gem 'pry'
+  gem 'poltergeist'
 end
 
 group :test do

@@ -1,11 +1,16 @@
 <h1>Stock Overflow</h1>
 
 <h2>Feed</h2>
-<% @questions.each do |question| %>
-<ul>
-<li><%= link_to question.title, question_path(question) %> </li>
-</ul>
-<% end %>
+<div class="container">
+  <ul id="all_questions">
+    <%= render @questions.reverse %>
+  </ul>
+</div>
+<% if current_user %>
+  <%= current_user.email %>
+  <%= link_to "Log out", destroy_user_session_path, :method => "delete" %>
+<% else %>
 <%= link_to "Create a user", new_user_registration_path %>
 <%= link_to "Login", new_user_session_path %>
-<%= link_to "New Question", new_question_path %>
+<%= link_to "New Question", new_question_path, id: "new_link", remote: true %>
+<% end %>
