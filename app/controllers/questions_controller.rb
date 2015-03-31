@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
   end
 
   def edit
-    @haiku = Haiku.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def create
@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
     @question = Question.destroy(params[:id])
       respond_to do |format|
         format.html do
-          flash[:notice] = "question deleted"
+        flash[:notice] = "question deleted"
           redirect_to root_path
         end
         format.js

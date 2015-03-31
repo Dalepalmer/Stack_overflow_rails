@@ -8,9 +8,10 @@
 </div>
 <% if current_user %>
   <%= current_user.email %>
-  <%= link_to "Log out", destroy_user_session_path, :method => "delete" %>
 <% else %>
+<%= link_to "Log out", destroy_user_session_path, :method => "delete" %>
 <%= link_to "Create a user", new_user_registration_path %>
 <%= link_to "Login", new_user_session_path %>
 <%= link_to "New Question", new_question_path, id: "new_link", remote: true %>
+
 <% end %>

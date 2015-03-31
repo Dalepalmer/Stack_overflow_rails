@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
-  @import "bootstrap-sprockets";
- @import "bootstrap";
+@import "bootstrap";
+@import "bootstrap-sprockets";
 
  .jumbotron {
   background: rgba(0, 0, 0, .70);

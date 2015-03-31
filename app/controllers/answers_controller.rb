@@ -1,10 +1,11 @@
 class AnswersController < ApplicationController
+  
   def new
+    @answer = Answer.new
   end
 
   def create
-    @question = Question.find(params[:question_id])
-    @answer = @question.answers.new(answer_params)
+    @answer = Answer.new(answer_params)
     if @answer.save
       flash[:notice] = "Answer added successfully! Might not be right but at least it's there."
       redirect_to :back

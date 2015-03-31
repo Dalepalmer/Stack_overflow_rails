@@ -1,11 +1,21 @@
-<li class="question" id="question_<% question.id %>">
+<li class="question" id="question_<%= question.id %>">
   <div class="jumbotron">
   <dl>
   <dt><%= question.title %></dt>
   <dd><%= question.body %></dd>
   <% if current_user == question.user %>
-    <dd> <%= button_to "delete", question_path(question), method: 'delete', remote: true %></dd>
+    <dd> <%= button_to "delete", question_path(question), method: 'delete', class: 'btn btn-danger', remote: true %></dd>
   <% end %>
+    <% if question.answers %>
+    <%= question.answers %>
+      <%= question.answers.each do |answer| %>
+      <%= answer.body %>
+      <%= answer.question_id %>
+      <%= answer.user_id %>
+      <%= answer.created_at %>
+    <% end %>
+      <%= button_to "Answer", new_question_answer_path(question), id: "new_link", class: 'btn btn-success', remote: true %>
+    <% end %>
   </dl>
   </div>
 </li>
